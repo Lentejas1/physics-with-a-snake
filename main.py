@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from sklearn import linear_model
 
 option = st.sidebar.selectbox("Topic", ("Main", "Toolbox", "About me"))
