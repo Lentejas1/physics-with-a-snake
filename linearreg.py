@@ -24,12 +24,12 @@ def run():
         yarray += "])"
 
         return str(
-            "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn import "
-            "linear_model\nfrom sklearn.metrics import r2_score\nX = {xarray}\nY = {yarray}\nmodel = "
-            "linear_model.LinearRegression()\nmodel.fit(X.reshape(-1, 1), Y, sample_weight=None)\nm = round(float("
-            "model.coef_), 3)\nn = round(float(model.intercept_), 3)\nX_r = np.array([min(X), max(X)])\nY_r = "
-            "np.array([m * min(X) + n, m * max(X) + n])\nfig, ax = plt.subplots()\nplt.grid()\nax.plot(X_r, Y_r, "
-            "color=\'red\')\nax.scatter(X, Y)\nplt.xlabel({labx})\nplt.ylabel({laby})\nplt.show()")
+            f"import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn import "
+            f"linear_model\nfrom sklearn.metrics import r2_score\nX = {xarray}\nY = {yarray}\nmodel = "
+            f"linear_model.LinearRegression()\nmodel.fit(X.reshape(-1, 1), Y, sample_weight=None)\nm = round(float("
+            f"model.coef_), 3)\nn = round(float(model.intercept_), 3)\nX_r = np.array([min(X), max(X)])\nY_r = "
+            f"np.array([m * min(X) + n, m * max(X) + n])\nfig, ax = plt.subplots()\nplt.grid()\nax.plot(X_r, Y_r, "
+            f"color=\'red\')\nax.scatter(X, Y)\nplt.xlabel({labx})\nplt.ylabel({laby})\nplt.show()")
 
     st.title("Linear regression calculator :chart_with_upwards_trend:")
     reg_available = False
@@ -72,23 +72,8 @@ def run():
             Y_pred = np.array([])
             for i in range(len(X)): Y_pred = np.append(Y_pred, m * X[i] + n)
             r2 = round(r2_score(Y, Y_pred),3)
-            
-            if m == 1:
-                if n > 0:
-                    st.latex(f"y=x+{n}")
-                elif n < 0:
-                    st.latex(f"y=x{n}")
-                else:
-                    st.latex(f"y=x")
-            else:
-                if n > 0:
-                    st.latex(f"y={m}x+{n}")
-                elif n < 0:
-                    st.latex(f"y={m}x{n}")
-                else:
-                    st.latex(f"y={m}x")
-                
-            st.latex(f"R^2={r2}")
+            st.latex(f"y={m}x+{n}")
+            st.latex(f"r^2={r2}")
             st.download_button('Download .py', py_download(X, Y, xlabel, ylabel), file_name="plot.py")
 
         except ValueError:
