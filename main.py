@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn import linear_model
 from sklearn.metrics import r2_score
 
@@ -81,7 +82,13 @@ elif option == "Toolbox":
             n = round(float(model.intercept_), 3)
             X_r = np.array([min(X), max(X)])
             Y_r = np.array([m * min(X) + n, m * max(X) + n])
-            st.markdown("Plotting temporarily not supported by Streamlit. You can download the code below so you can represent it on your own computer")
+            fig, ax = plt.subplots()
+            plt.grid()
+            ax.plot(X_r, Y_r, color="red")
+            ax.scatter(X, Y)
+            plt.xlabel(xlabel)
+            plt.ylabel(ylabel)
+            st.pyplot(fig)
             Y_pred = np.array([])
             for i in range(len(X)): Y_pred = np.append(Y_pred, m * X[i] + n)
             r2 = round(r2_score(Y, Y_pred),3)
