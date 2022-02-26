@@ -5,7 +5,7 @@ import streamlit as st
 
 
 def run():
-    st.title(r"$\vec{B}$ produced by a solenoid :loop:")
+    st.title(r"[Beta] $\vec{B}$ produced by a solenoid :loop:")
 
     coil = magpy.Collection()
 
@@ -35,3 +35,5 @@ def run():
     ax2.set_ylabel("$z$ [mm]")
 
     st.pyplot(fig)
+    
+    st.markdown("[Beta] It's possible to appear errors while plotting so try to play with variables in order to have nice plots. :)")
