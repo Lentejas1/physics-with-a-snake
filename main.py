@@ -47,6 +47,9 @@ if option == "Main":
     st.title("Physics with a snake :snake:")
     st.markdown("Welcome to my very first web-app. It's gonna consist on Phisycs' stuff related with Python.")
     st.latex(r"\textbf{F}=\dfrac{d\textbf{p}}{dt}")
+    st.markdown("We have a **linear regression calculator** in the *Toolbox* page which can be used to calculate your "
+                "own linear models and plot them.")
+    st.markdown("Page created with :heart: by [Carlos Herrera](https://www.linkedin.com/in/carlos-herrera-vázquez-6218911b3).")
 elif option == "Toolbox":
     st.title("Linear regression calculator")
     reg_available = False
@@ -79,16 +82,10 @@ elif option == "Toolbox":
             n = round(float(model.intercept_), 3)
             X_r = np.array([min(X), max(X)])
             Y_r = np.array([m * min(X) + n, m * max(X) + n])
-            fig, ax = plt.subplots()
-            plt.grid()
-            ax.plot(X_r, Y_r, color="red")
-            ax.scatter(X, Y)
-            plt.xlabel(xlabel)
-            plt.ylabel(ylabel)
-            st.pyplot(fig)
+            st.markdown("Plotting temporarily not supported by Streamlit. You can download the code below so you can represent it on your own computer")
             Y_pred = np.array([])
             for i in range(len(X)): Y_pred = np.append(Y_pred, m * X[i] + n)
-            r2 = r2_score(Y, Y_pred)
+            r2 = round(r2_score(Y, Y_pred),3)
             st.latex(f"y={m}x+{n}")
             st.latex(f"r^2={r2}")
             st.download_button('Download .py', py_download(X, Y, xlabel, ylabel), file_name="plot.py")
