@@ -5,7 +5,7 @@ import streamlit as st
 
 
 def run():
-    st.title(r"$\vec{B}$ produced by a solenoid :satellite:")
+    st.title(r"$\vec{B}$ produced by a solenoid :loop:")
 
     coil = magpy.Collection()
 
