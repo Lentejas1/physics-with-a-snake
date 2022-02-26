@@ -8,7 +8,7 @@ option = st.sidebar.selectbox("Topic", ("Main", "Toolbox", "About me"))
 
 if option == "Main":
     st.title("Physics with a snake :snake:")
-    st.markdown("Welcome to my very first web-app. It's gonna consist on Phisycs' stuff related with Python.")
+    st.markdown("Welcome to my very first web-app. It's gonna consist on Phisycs' stuff related to Python.")
     st.latex(r"\textbf{F}=\dfrac{d\textbf{p}}{dt}")
     st.markdown("We have a **linear regression calculator** in the *Toolbox* page which can be used to calculate your "
                 "own linear models and plot them.")
