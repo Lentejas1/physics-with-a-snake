@@ -72,12 +72,22 @@ def run():
             Y_pred = np.array([])
             for i in range(len(X)): Y_pred = np.append(Y_pred, m * X[i] + n)
             r2 = round(r2_score(Y, Y_pred),3)
-            if n > 0:
-                st.latex(f"y={m}x+{n}")
-            elif n < 0:
-                st.latex(f"y={m}x{n}")
+            
+            if m == 1:
+                if n > 0:
+                    st.latex(f"y=x+{n}")
+                elif n < 0:
+                    st.latex(f"y=x{n}")
+                else:
+                    st.latex(f"y=x")
             else:
-                st.latex(f"y={m}x")
+                if n > 0:
+                    st.latex(f"y={m}x+{n}")
+                elif n < 0:
+                    st.latex(f"y={m}x{n}")
+                else:
+                    st.latex(f"y={m}x")
+                
             st.latex(f"R^2={r2}")
             st.download_button('Download .py', py_download(X, Y, xlabel, ylabel), file_name="plot.py")
 
