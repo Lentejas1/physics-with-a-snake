@@ -15,10 +15,10 @@ if option == "Main":
     st.markdown(
         "Page created with :heart: by [Carlos Herrera](https://www.linkedin.com/in/carlos-herrera-vázquez-6218911b3).")
 elif option == "Toolbox":
-    ToolboxChoice = st.sidebar.radio("", ['Linear regression calc', r"$\vec{B}$ produced by a solenoid"])
+    ToolboxChoice = st.sidebar.radio("", ['Linear regression calc', "B produced by a solenoid (beta)"])
     if ToolboxChoice == "Linear regression calc":
         linearreg.run()
-    elif ToolboxChoice == r"$\vec{B}$ produced by a solenoid":
+    elif ToolboxChoice == "B produced by a solenoid (beta)":
         magsim.run()
 if option == "About me":
     st.title("About me :bust_in_silhouette:")
