@@ -4,3 +4,4 @@ pandas
 matplotlib
 sklearn
 magpylib
+https://github.com/[Lentejas1]/[physics-with-a-snake]@[main]
