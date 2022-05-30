@@ -61,10 +61,11 @@ def run():
             m = round(float(model.coef_), 3)
             n = round(float(model.intercept_), 3)
             X_r = np.array([min(X), max(X)])
+            X2 = np.array[X_r**2]
             Y_r = np.array([m * min(X) + n, m * max(X) + n])
             fig, ax = plt.subplots()
             plt.grid()
-            ax.plot(X_r, Y_r, color="red")
+            ax.plot(X2, Y_r, color="red")
             ax.scatter(X, Y)
             plt.xlabel(xlabel)
             plt.ylabel(ylabel)
@@ -75,18 +76,18 @@ def run():
             
             if m == 1:
                 if n > 0:
-                    st.latex(f"y=x+{n}")
+                    st.latex(f"y=x**2+{n}")
                 elif n < 0:
-                    st.latex(f"y=x{n}")
+                    st.latex(f"y=x**2{n}")
                 else:
-                    st.latex(f"y=x")
+                    st.latex(f"y=x**2")
             else:
                 if n > 0:
                     st.latex(f"y={m}x+{n}")
                 elif n < 0:
                     st.latex(f"y={m}x{n}")
                 else:
-                    st.latex(f"y={m}x")
+                    st.latex(f"y={m}x**2")
 
             st.download_button('Download .py', py_download(X, Y, xlabel, ylabel), file_name="plot.py")
 
