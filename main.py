@@ -23,7 +23,7 @@ elif option == "Toolbox":
 if option == "About me":
     st.title("About me :bust_in_silhouette:")
     st.markdown("Hey, there!")
-    st.markdown("My name is Carlos and I'm a Physics' Undergraduate (2n grande currently). The aim of "
+    st.markdown("My name is Carlos and I'm a Physics' Undergraduate (3n grande currently). The aim of "
                 "this website is to show what we can do with Python related with Physics at the same time I try to "
                 "show you all how you can make it too.")
     st.markdown("I hope you like it!")

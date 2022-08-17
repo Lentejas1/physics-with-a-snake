@@ -61,34 +61,42 @@ def run():
             m = round(float(model.coef_), 3)
             n = round(float(model.intercept_), 3)
             X_r = np.array([min(X), max(X)])
-            X2 = np.array[X_r**2]
+            #X2 = np.array[X_r**2]
             Y_r = np.array([m * min(X) + n, m * max(X) + n])
             fig, ax = plt.subplots()
             plt.grid()
-            ax.plot(X2, Y_r, color="red")
+            ax.plot(X_r, Y_r, color="red")
             ax.scatter(X, Y)
             plt.xlabel(xlabel)
             plt.ylabel(ylabel)
             st.pyplot(fig)
             Y_pred = np.array([])
             for i in range(len(X)): Y_pred = np.append(Y_pred, m * X[i] + n)
-            r2 = round(r2_score(Y, Y_pred),3)
-            
+            r2 = round(r2_score(Y, Y_pred), 3)
+
+            if n.is_integer:
+                n = int(n)
+            if m.is_integer:
+                m = int(m)
             if m == 1:
                 if n > 0:
-                    st.latex(f"y=x**2+{n}")
+                    st.latex(f"y=x+{n}")
                 elif n < 0:
-                    st.latex(f"y=x**2{n}")
+                    st.latex(f"y=x{n}")
                 else:
-                    st.latex(f"y=x**2")
+                    st.latex(f"y=x")
             else:
                 if n > 0:
                     st.latex(f"y={m}x+{n}")
                 elif n < 0:
                     st.latex(f"y={m}x{n}")
                 else:
-                    st.latex(f"y={m}x**2")
+                    st.latex(f"y={m}x")
 
+            if r2.is_integer():
+                r2 = int(r2)
+
+            st.latex(f"r^2={r2}")
             st.download_button('Download .py', py_download(X, Y, xlabel, ylabel), file_name="plot.py")
 
         except ValueError:
